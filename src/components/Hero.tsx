@@ -3,6 +3,8 @@
 import { motion, useScroll, useTransform, type Variants } from "framer-motion";
 import { ArrowRight, Mail } from "lucide-react";
 import { useRef } from "react";
+import MatrixRain from "./MatrixRain";
+import ScrambleText from "./ScrambleText";
 
 const GithubIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -51,6 +53,9 @@ export default function Hero() {
 
   return (
     <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 py-20">
+      {/* Matrix Rain Background */}
+      <MatrixRain />
+
       {/* Background Grid with Parallax */}
       <motion.div
         style={{ y: gridY, opacity }}
@@ -84,9 +89,11 @@ export default function Hero() {
           variants={itemVariants}
           className="text-[clamp(3rem,8vw,6rem)] font-bold tracking-tight mb-6 leading-[1.1]"
         >
-          Sabbi Arrafta Sahib
+          <ScrambleText text="Sabbi Arrafta Sahib" />
           <br />
-          <span className="gradient-text">Front-end Developer</span>
+          <span className="gradient-text">
+            <ScrambleText text="Front-end Developer" />
+          </span>
         </motion.h1>
 
         {/* Description */}

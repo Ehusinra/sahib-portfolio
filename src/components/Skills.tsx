@@ -152,7 +152,7 @@ export default function Skills() {
                   {category.skills.map((skill) => (
                     <span
                       key={skill.name}
-                      className={`${getSkillSize(
+                      className={`skill-tag ${getSkillSize(
                         skill.level
                       )} font-mono border border-border-subtle bg-background/70 backdrop-blur-sm text-foreground/80 rounded-lg hover:border-foreground/40 hover:text-foreground hover:scale-105 transition-all cursor-default ${
                         skill.level === "primary"
