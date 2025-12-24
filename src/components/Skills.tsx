@@ -9,6 +9,7 @@ type SkillLevel = "primary" | "proficient";
 interface Skill {
   name: string;
   level: SkillLevel;
+  proficiency: number; // 0-100 percentage
 }
 
 interface SkillCategory {
@@ -28,11 +29,11 @@ export default function Skills() {
       icon: Code2,
       color: "from-blue-500 to-cyan-500",
       skills: [
-        { name: "React", level: "primary" },
-        { name: "Next.js", level: "primary" },
-        { name: "TypeScript", level: "primary" },
-        { name: "Tailwind CSS", level: "primary" },
-        { name: "Vue.js", level: "proficient" },
+        { name: "React", level: "primary", proficiency: 95 },
+        { name: "Next.js", level: "primary", proficiency: 90 },
+        { name: "TypeScript", level: "primary", proficiency: 90 },
+        { name: "Tailwind CSS", level: "primary", proficiency: 95 },
+        { name: "Vue.js", level: "proficient", proficiency: 75 },
       ],
     },
     {
@@ -40,10 +41,10 @@ export default function Skills() {
       icon: Database,
       color: "from-violet-500 to-purple-500",
       skills: [
-        { name: "Node.js", level: "primary" },
-        { name: "Laravel", level: "proficient" },
-        { name: "Prisma", level: "proficient" },
-        { name: "PostgreSQL", level: "proficient" },
+        { name: "Node.js", level: "primary", proficiency: 85 },
+        { name: "Laravel", level: "proficient", proficiency: 70 },
+        { name: "Prisma", level: "proficient", proficiency: 80 },
+        { name: "PostgreSQL", level: "proficient", proficiency: 75 },
       ],
     },
     {
@@ -51,8 +52,8 @@ export default function Skills() {
       icon: Wrench,
       color: "from-orange-500 to-red-500",
       skills: [
-        { name: "Git", level: "primary" },
-        { name: "Docker", level: "proficient" },
+        { name: "Git", level: "primary", proficiency: 90 },
+        { name: "Docker", level: "proficient", proficiency: 75 },
       ],
     },
   ];
@@ -77,10 +78,6 @@ export default function Skills() {
         ease: [0.4, 0, 0.2, 1] as const,
       },
     },
-  };
-
-  const getSkillSize = (level: SkillLevel) => {
-    return level === "primary" ? "text-base px-4 py-2.5" : "text-sm px-3 py-2";
   };
 
   return (
@@ -132,21 +129,53 @@ export default function Skills() {
                   </h3>
                 </div>
 
-                {/* Skill Tags */}
-                <div className="flex flex-wrap gap-2 justify-center">
-                  {category.skills.map((skill) => (
-                    <span
-                      key={skill.name}
-                      className={`${getSkillSize(
-                        skill.level
-                      )} font-mono border border-border-subtle bg-background/70 backdrop-blur-sm text-foreground/80 rounded-lg hover:border-foreground/40 hover:text-foreground hover:scale-105 transition-all cursor-default ${
-                        skill.level === "primary"
-                          ? "font-semibold"
-                          : "font-normal"
-                      }`}
-                    >
-                      {skill.name}
-                    </span>
+                {/* Skills with Proficiency Bars */}
+                <div className="space-y-4">
+                  {category.skills.map((skill, index) => (
+                    <div key={skill.name} className="group/skill">
+                      <div className="flex items-center justify-between mb-2">
+                        <span
+                          className={`text-sm font-mono text-foreground/80 group-hover/skill:text-foreground transition-colors ${
+                            skill.level === "primary" ? "font-semibold" : "font-normal"
+                          }`}
+                        >
+                          {skill.name}
+                        </span>
+                        <span className="text-xs font-mono text-foreground/50">
+                          {skill.proficiency}%
+                        </span>
+                      </div>
+                      <div className="relative h-2 bg-background/50 rounded-full overflow-hidden border border-border-subtle">
+                        <motion.div
+                          className={`absolute inset-y-0 left-0 bg-gradient-to-r ${category.color} rounded-full`}
+                          initial={{ width: 0 }}
+                          animate={
+                            isInView
+                              ? { width: `${skill.proficiency}%` }
+                              : { width: 0 }
+                          }
+                          transition={{
+                            duration: 1.2,
+                            delay: 0.3 + index * 0.1,
+                            ease: [0.22, 1, 0.36, 1],
+                          }}
+                        />
+                        <motion.div
+                          className={`absolute inset-y-0 left-0 bg-gradient-to-r ${category.color} opacity-50 blur-sm`}
+                          initial={{ width: 0 }}
+                          animate={
+                            isInView
+                              ? { width: `${skill.proficiency}%` }
+                              : { width: 0 }
+                          }
+                          transition={{
+                            duration: 1.2,
+                            delay: 0.3 + index * 0.1,
+                            ease: [0.22, 1, 0.36, 1],
+                          }}
+                        />
+                      </div>
+                    </div>
                   ))}
                 </div>
 
