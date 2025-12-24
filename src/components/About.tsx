@@ -104,7 +104,7 @@ export default function About() {
             <motion.div variants={itemVariants} className="pt-4">
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 text-foreground/80 hover:text-foreground font-medium group transition-colors"
+                className="link-underline inline-flex items-center gap-2 text-foreground/80 hover:text-foreground font-medium group transition-colors"
               >
                 Let's work together
                 <span className="group-hover:translate-x-1 transition-transform">→</span>

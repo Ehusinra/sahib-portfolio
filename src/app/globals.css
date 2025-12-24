@@ -23,6 +23,16 @@
   --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -50,6 +60,70 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .gradient-text {
+    animation: none;
+  }
+}
+
+/* Enhanced Link Hover Effect */
+a {
+  position: relative;
+  transition: color 0.3s var(--ease-smooth);
+}
+
+/* Animated Underline for Text Links */
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--accent-primary),
+    var(--accent-secondary)
+  );
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s var(--ease-smooth);
+}
+
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Button Press Effect */
+button,
+.btn {
+  transition: transform 0.1s var(--ease-smooth);
+}
+
+button:active,
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* Smooth Transitions for Interactive Elements */
+button,
+a,
+input,
+textarea {
+  transition-property: transform, opacity, color, background-color, border-color,
+    box-shadow;
+  transition-duration: 0.3s;
+  transition-timing-function: var(--ease-smooth);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a::after,
+  button,
+  .btn {
+    transition: none;
     animation: none;
   }
 }
