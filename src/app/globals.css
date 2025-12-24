@@ -127,3 +127,27 @@ textarea {
     animation: none;
   }
 }
+
+/* Performance Optimizations */
+/* Force GPU acceleration for animated elements */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Prevent font flashing */
+@font-face {
+  font-display: swap;
+}
+
+/* Optimize text rendering */
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Improve scrolling performance on iOS */
+* {
+  -webkit-overflow-scrolling: touch;
+}
