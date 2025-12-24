@@ -54,7 +54,7 @@ export default function Hero() {
   };
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 py-20">
+    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden px-6">
       {/* Matrix Rain Background */}
       <MatrixRain />
 

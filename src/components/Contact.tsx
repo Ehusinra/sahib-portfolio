@@ -19,9 +19,9 @@ const LinkedinIcon = ({ className }: { className?: string }) => (
 
 // EmailJS Configuration
 // TODO: Replace these with your actual EmailJS credentials from https://www.emailjs.com/
-const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID"; // e.g., "service_abc123"
-const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID"; // e.g., "template_xyz789"
-const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY"; // e.g., "abcdefghijklmnop"
+const EMAILJS_SERVICE_ID = "service_u5secwj"; // e.g., "service_abc123"
+const EMAILJS_TEMPLATE_ID = "template_8lwvb8f"; // e.g., "template_xyz789"
+const EMAILJS_PUBLIC_KEY = "UYdnpMj97Rckci10L"; // e.g., "abcdefghijklmnop"
 
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
