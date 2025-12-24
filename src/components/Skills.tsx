@@ -118,10 +118,10 @@ export default function Skills() {
               <motion.div
                 key={category.title}
                 variants={cardVariants}
-                className="group relative p-6 border border-border-subtle bg-background/50 backdrop-blur-sm rounded-2xl hover:border-foreground/20 transition-all"
+                className="group relative p-6 border border-border-subtle bg-background/50 backdrop-blur-sm rounded-2xl hover:border-foreground/20 transition-all text-center"
               >
                 {/* Category Header */}
-                <div className="flex items-center gap-3 mb-6">
+                <div className="flex items-center justify-center gap-3 mb-6">
                   <div
                     className={`p-2.5 rounded-lg bg-gradient-to-br ${category.color} bg-opacity-10`}
                   >
@@ -133,7 +133,7 @@ export default function Skills() {
                 </div>
 
                 {/* Skill Tags */}
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 justify-center">
                   {category.skills.map((skill) => (
                     <span
                       key={skill.name}

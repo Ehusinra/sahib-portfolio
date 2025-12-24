@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Code2, Laptop, Layers } from "lucide-react";
+import { Code2, Laptop, Layers, GraduationCap } from "lucide-react";
 
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -46,6 +46,11 @@ export default function About() {
       icon: Layers,
       label: "Modern Stack",
       description: "React ecosystem and TypeScript",
+    },
+    {
+      icon: GraduationCap,
+      label: "BSc in CS & Engineering",
+      description: "Foundation in algorithms, data structures, and system design",
     },
   ];
 
@@ -148,24 +153,6 @@ export default function About() {
                 </motion.div>
               );
             })}
-
-            {/* Education Badge */}
-            <motion.div
-              variants={itemVariants}
-              className="mt-8 p-4 border border-border-subtle bg-background/30 backdrop-blur-sm rounded-lg"
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full bg-accent-primary" />
-                <div>
-                  <p className="text-sm font-mono text-foreground/60">
-                    BSc in Computer Science & Engineering
-                  </p>
-                  <p className="text-xs text-foreground/40 mt-1">
-                    Foundation in algorithms, data structures, and system design
-                  </p>
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
         </motion.div>
       </div>
