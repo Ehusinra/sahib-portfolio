@@ -60,9 +60,12 @@ export default function Experience() {
     <section
       ref={sectionRef}
       id="experience"
-      className="relative py-24 px-6 bg-background border-t border-border-subtle"
+      className="relative py-24 px-6 bg-background border-t border-border-subtle section-grid-overlay overflow-hidden"
     >
-      <div className="max-w-4xl mx-auto">
+      {/* Subtle accent orb following timeline */}
+      <div className="absolute top-1/2 left-0 w-80 h-80 bg-accent-primary/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="relative max-w-4xl mx-auto">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -68,9 +68,12 @@ export default function Projects() {
     <section
       ref={sectionRef}
       id="projects"
-      className="relative py-24 px-6 bg-background"
+      className="relative py-24 px-6 bg-background section-gradient-subtle overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto">
+      {/* Central accent orb behind featured project */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-accent-secondary/5 rounded-full blur-[140px] pointer-events-none" />
+
+      <div className="relative max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -53,9 +53,12 @@ export default function About() {
     <section
       ref={sectionRef}
       id="about"
-      className="relative py-24 px-6 bg-background border-t border-border-subtle"
+      className="relative py-24 px-6 bg-background border-t border-border-subtle section-gradient-subtle overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto">
+      {/* Subtle background accent */}
+      <div className="absolute top-20 right-0 w-96 h-96 bg-accent-primary/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="relative max-w-6xl mx-auto">
         <motion.div
           variants={containerVariants}
           initial="hidden"
