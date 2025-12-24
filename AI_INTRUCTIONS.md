@@ -1,16 +1,32 @@
 # AI CONTRIBUTION RULES
 
-You are working inside a professional Next.js (App Router) portfolio repository.
+You are assisting in the development of a professional portfolio website.
 
-Rules:
-- Do NOT change existing folder structure unless instructed
-- Use TypeScript strictly
-- Use Tailwind CSS only (no inline styles)
+## General Rules
+- Do NOT change the project folder structure unless explicitly asked
+- Do NOT refactor unrelated code
+- Do NOT generate unnecessary files or libraries
+- Keep changes minimal and focused
+
+## Tech Rules
+- Use Next.js App Router conventions
+- Use TypeScript strictly (no any unless justified)
+- Use Tailwind CSS only (no inline styles, no CSS modules)
+- Prefer Server Components; use Client Components only when necessary
+- Use Framer Motion for animations when appropriate
+- Use Lucide Icons only
+
+## Code Quality Rules
 - Components must be reusable
-- Follow clean architecture and accessibility best practices
-- Prefer server components unless client is required
-- Use Framer Motion for animations
-- No unnecessary libraries
-- Code must be production-ready
+- Keep components small and readable
+- Follow accessibility best practices (semantic HTML, aria labels)
+- Optimize for performance and SEO
+- Avoid premature optimization unless necessary
 
-If unsure, ASK before changing structure.
+## Workflow Rules
+- Explain architectural decisions briefly before coding
+- If unsure about a decision, ASK before implementing
+- Do not generate everything at once
+
+This codebase represents a production-grade developer portfolio.
+Quality and clarity matter more than speed.
