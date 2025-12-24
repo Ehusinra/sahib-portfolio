@@ -111,7 +111,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-sm text-foreground/50 mb-1">Email</p>
-                    <p className="text-foreground font-medium">your.email@example.com</p>
+                    <p className="text-foreground font-medium">sabbiarrafta@gmail.com</p>
                   </div>
                 </a>
 
@@ -145,7 +145,7 @@ export default function Contact() {
               <p className="text-sm text-foreground/50 mb-4">Connect with me</p>
               <div className="flex gap-4">
                 <a
-                  href="https://github.com"
+                  href="https://https://github.com/Ehusinra"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-4 rounded-xl border border-border-subtle bg-background/50 backdrop-blur-sm text-foreground/60 hover:text-foreground hover:border-foreground/20 transition-all hover:scale-110 hover:rotate-6"
@@ -154,7 +154,7 @@ export default function Contact() {
                   <GithubIcon className="w-6 h-6" />
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/sabbi-arrafta-sahib-ehus/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-4 rounded-xl border border-border-subtle bg-background/50 backdrop-blur-sm text-foreground/60 hover:text-foreground hover:border-foreground/20 transition-all hover:scale-110 hover:rotate-6"

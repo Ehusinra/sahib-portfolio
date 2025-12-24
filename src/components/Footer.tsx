@@ -77,7 +77,7 @@ export default function Footer() {
             </h4>
             <div className="flex gap-3">
               <a
-                href="https://github.com"
+                href="https://github.com/Ehusinra"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-lg border border-border-subtle bg-background/50 backdrop-blur-sm text-foreground/60 hover:text-foreground hover:border-foreground/20 transition-all hover:scale-110"
@@ -86,7 +86,7 @@ export default function Footer() {
                 <GithubIcon className="w-5 h-5" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/sabbi-arrafta-sahib-ehus/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-lg border border-border-subtle bg-background/50 backdrop-blur-sm text-foreground/60 hover:text-foreground hover:border-foreground/20 transition-all hover:scale-110"
