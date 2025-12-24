@@ -102,6 +102,8 @@ export default function About() {
               marketing site, I deliver production-ready work that teams can
               build on. I write documentation, follow best practices, and
               optimize for the people who will maintain the code after me.
+              Beyond frontend, I'm also exploring Python software engineering
+              to expand my technical range.
             </motion.p>
 
             <motion.div variants={itemVariants} className="pt-4">

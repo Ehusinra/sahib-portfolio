@@ -33,6 +33,10 @@ export default function Skills() {
         { name: "TypeScript", level: "primary" },
         { name: "Tailwind CSS", level: "primary" },
         { name: "Vue.js", level: "proficient" },
+        { name: "JavaScript", level: "primary" },
+        { name: "HTML", level: "primary" },
+        { name: "CSS", level: "primary" },
+        { name: "Bootstrap", level: "proficient" },
       ],
     },
     {
@@ -44,6 +48,10 @@ export default function Skills() {
         { name: "Laravel", level: "proficient" },
         { name: "Prisma", level: "proficient" },
         { name: "PostgreSQL", level: "proficient" },
+        { name: "MySQL", level: "proficient" },
+        { name: "MongoDB", level: "proficient" },
+        { name: "REST APIs", level: "primary" },
+        { name: "Neon.tech", level: "proficient" },
       ],
     },
     {
@@ -52,7 +60,10 @@ export default function Skills() {
       color: "from-orange-500 to-red-500",
       skills: [
         { name: "Git", level: "primary" },
+        { name: "GitHub", level: "primary" },
         { name: "Docker", level: "proficient" },
+        { name: "Postman", level: "proficient" },
+        { name: "Firebase", level: "proficient" },
       ],
     },
   ];

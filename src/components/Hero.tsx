@@ -94,9 +94,9 @@ export default function Hero() {
           variants={itemVariants}
           className="text-lg sm:text-xl md:text-2xl text-foreground/60 max-w-3xl mx-auto mb-8 leading-relaxed font-light"
         >
-          Crafting pixel-perfect, high-performance web applications.
+          Crafting scalable, high-performance web experiences with modern frontend technologies.
           <br className="hidden sm:block" />
-          Focused on user experience and clean code.
+          Focused on production-ready code and exceptional user experiences.
         </motion.p>
 
         {/* Skill Tags */}
