@@ -13,9 +13,9 @@ export default function ScrambleText({
   text,
   className = "",
   speed = 50,
-  scrambleSpeed = 30,
+  scrambleSpeed = 20,
 }: ScrambleTextProps) {
-  const [displayText, setDisplayText] = useState("");
+  const [displayText, setDisplayText] = useState(text);
   const [isHovered, setIsHovered] = useState(false);
 
   const chars = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`";
@@ -38,7 +38,7 @@ export default function ScrambleText({
           .join("");
 
         setDisplayText(scrambled);
-        currentIndex += 0.1;
+        currentIndex += 0.5; // Increased from 0.1 to 0.5 for faster reveal
       } else {
         clearInterval(scrambleInterval);
         setDisplayText(text);
