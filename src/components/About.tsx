@@ -128,10 +128,10 @@ export default function About() {
                 <motion.div
                   key={item.label}
                   variants={itemVariants}
-                  className="group relative p-6 border border-border-subtle bg-background/50 backdrop-blur-sm rounded-xl hover:border-foreground/20 transition-all hover:translate-x-2"
+                  className="group relative p-6 border border-border-subtle bg-background/50 backdrop-blur-sm rounded-xl hover:border-foreground/20 transition-all hover:translate-x-2 playful-card"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="p-2 rounded-lg bg-accent-primary/10 text-accent-primary group-hover:bg-accent-primary/20 transition-colors">
+                    <div className="p-2 rounded-lg bg-accent-primary/10 text-accent-primary group-hover:bg-accent-primary/20 transition-colors jello-hover">
                       <Icon className="w-5 h-5" />
                     </div>
                     <div>

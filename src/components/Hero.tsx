@@ -5,6 +5,7 @@ import { ArrowRight, Mail } from "lucide-react";
 import { useRef } from "react";
 import MatrixRain from "./MatrixRain";
 import ScrambleText from "./ScrambleText";
+import MagneticButton from "./MagneticButton";
 
 const GithubIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -126,22 +127,26 @@ export default function Hero() {
           variants={itemVariants}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
         >
-          <a
-            href="#projects"
-            className="group relative px-8 py-4 bg-foreground text-background rounded-full font-medium overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] w-full sm:w-auto"
-          >
-            <span className="relative z-10 flex items-center justify-center gap-2">
-              View Projects
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </span>
-          </a>
+          <MagneticButton>
+            <a
+              href="#projects"
+              className="group relative px-8 py-4 bg-foreground text-background rounded-full font-medium overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] w-full sm:w-auto inline-block"
+            >
+              <span className="relative z-10 flex items-center justify-center gap-2">
+                View Projects
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </span>
+            </a>
+          </MagneticButton>
 
-          <a
-            href="#contact"
-            className="group px-8 py-4 border border-border-subtle bg-background/50 backdrop-blur-sm text-foreground rounded-full font-medium transition-all hover:bg-foreground/5 hover:border-foreground/20 w-full sm:w-auto"
-          >
-            Get in Touch
-          </a>
+          <MagneticButton>
+            <a
+              href="#contact"
+              className="group px-8 py-4 border border-border-subtle bg-background/50 backdrop-blur-sm text-foreground rounded-full font-medium transition-all hover:bg-foreground/5 hover:border-foreground/20 w-full sm:w-auto inline-block"
+            >
+              Get in Touch
+            </a>
+          </MagneticButton>
         </motion.div>
 
         {/* Social Links */}

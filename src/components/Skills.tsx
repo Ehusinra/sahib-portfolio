@@ -33,10 +33,6 @@ export default function Skills() {
         { name: "TypeScript", level: "primary" },
         { name: "Tailwind CSS", level: "primary" },
         { name: "Vue.js", level: "proficient" },
-        { name: "JavaScript", level: "primary" },
-        { name: "HTML", level: "primary" },
-        { name: "CSS", level: "primary" },
-        { name: "Bootstrap", level: "proficient" },
       ],
     },
     {
@@ -48,10 +44,6 @@ export default function Skills() {
         { name: "Laravel", level: "proficient" },
         { name: "Prisma", level: "proficient" },
         { name: "PostgreSQL", level: "proficient" },
-        { name: "MySQL", level: "proficient" },
-        { name: "MongoDB", level: "proficient" },
-        { name: "REST APIs", level: "primary" },
-        { name: "Neon.tech", level: "proficient" },
       ],
     },
     {
@@ -60,10 +52,7 @@ export default function Skills() {
       color: "from-orange-500 to-red-500",
       skills: [
         { name: "Git", level: "primary" },
-        { name: "GitHub", level: "primary" },
         { name: "Docker", level: "proficient" },
-        { name: "Postman", level: "proficient" },
-        { name: "Firebase", level: "proficient" },
       ],
     },
   ];
@@ -98,13 +87,9 @@ export default function Skills() {
     <section
       ref={sectionRef}
       id="skills"
-      className="relative py-24 px-6 bg-background section-noise overflow-hidden"
+      className="relative py-24 px-6 bg-background"
     >
-      {/* Dual accent orbs matching category colors */}
-      <div className="absolute top-20 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-20 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="relative max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -152,7 +137,7 @@ export default function Skills() {
                   {category.skills.map((skill) => (
                     <span
                       key={skill.name}
-                      className={`skill-tag ${getSkillSize(
+                      className={`${getSkillSize(
                         skill.level
                       )} font-mono border border-border-subtle bg-background/70 backdrop-blur-sm text-foreground/80 rounded-lg hover:border-foreground/40 hover:text-foreground hover:scale-105 transition-all cursor-default ${
                         skill.level === "primary"

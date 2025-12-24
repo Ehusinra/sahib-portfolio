@@ -8,6 +8,9 @@ import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import CustomCursor from "@/components/CustomCursor";
 import ParticlesBackground from "@/components/ParticlesBackground";
+import FloatingIcons from "@/components/FloatingIcons";
+import AnimatedBlobs from "@/components/AnimatedBlobs";
+import ClickRipple from "@/components/ClickRipple";
 
 export default function Home() {
   return (
@@ -22,6 +25,9 @@ export default function Home() {
 
       <CustomCursor />
       <ParticlesBackground />
+      <FloatingIcons />
+      <AnimatedBlobs />
+      <ClickRipple />
       <ScrollProgress />
       <main id="main-content" className="min-h-screen bg-background">
         <Hero />
