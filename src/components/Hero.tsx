@@ -6,6 +6,7 @@ import { useRef } from "react";
 import MatrixRain from "./MatrixRain";
 import ScrambleText from "./ScrambleText";
 import MagneticButton from "./MagneticButton";
+import TypingAnimation from "./TypingAnimation";
 
 const GithubIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -93,7 +94,14 @@ export default function Hero() {
           <ScrambleText text="Sabbi Arrafta Sahib" />
           <br />
           <span className="gradient-text">
-            <ScrambleText text="Front-end Developer" />
+            <TypingAnimation
+              words={[
+                "Front-end Developer",
+                "React Specialist",
+                "TypeScript Expert",
+                "UI/UX Enthusiast"
+              ]}
+            />
           </span>
         </motion.h1>
 

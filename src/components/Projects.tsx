@@ -16,6 +16,7 @@ interface Project {
   outcome?: string;
   liveUrl?: string;
   githubUrl?: string;
+  images?: string[];
 }
 
 export default function Projects() {
@@ -39,6 +40,11 @@ export default function Projects() {
         "Delivered a fully functional e-commerce platform with smooth checkout experience, admin panel for product management, and optimized performance for mobile users.",
       liveUrl: "#", // Replace with actual URL
       // githubUrl: "#", // Uncomment if repo is public
+      images: [
+        "https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?w=800&h=600&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&h=600&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&h=600&fit=crop&q=80",
+      ],
     },
   ];
 
@@ -128,6 +134,34 @@ export default function Projects() {
                       </p>
                     </div>
                   </div>
+
+                  {/* Project Images Gallery */}
+                  {project.images && project.images.length > 0 && (
+                    <div className="mb-8">
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        {project.images.map((image, index) => (
+                          <motion.div
+                            key={index}
+                            className="group/img relative aspect-[4/3] overflow-hidden rounded-xl border border-border-subtle bg-background/30"
+                            whileHover={{ scale: 1.02 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <img
+                              src={image}
+                              alt={`${project.title} screenshot ${index + 1}`}
+                              className="w-full h-full object-cover transition-all duration-500 group-hover/img:scale-110"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-300" />
+                            <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between opacity-0 group-hover/img:opacity-100 transition-opacity duration-300">
+                              <span className="text-xs font-mono text-foreground/80 px-2 py-1 bg-background/80 backdrop-blur-sm rounded">
+                                Screenshot {index + 1}
+                              </span>
+                            </div>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
                   {/* Tech Stack */}
                   <div className="mb-8">

@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Send, Mail, MapPin, Download, Loader2 } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 const GithubIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -16,8 +17,15 @@ const LinkedinIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+// EmailJS Configuration
+// TODO: Replace these with your actual EmailJS credentials from https://www.emailjs.com/
+const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID"; // e.g., "service_abc123"
+const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID"; // e.g., "template_xyz789"
+const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY"; // e.g., "abcdefghijklmnop"
+
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formStatus, setFormStatus] = useState<"idle" | "success" | "error">("idle");
@@ -47,18 +55,50 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setFormStatus("idle");
 
-    // Simulate form submission (replace with actual form handling)
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    try {
+      // Check if EmailJS credentials are configured
+      if (
+        EMAILJS_SERVICE_ID === "YOUR_SERVICE_ID" ||
+        EMAILJS_TEMPLATE_ID === "YOUR_TEMPLATE_ID" ||
+        EMAILJS_PUBLIC_KEY === "YOUR_PUBLIC_KEY"
+      ) {
+        // Fallback: Show success message without actually sending
+        console.warn(
+          "EmailJS not configured. Please add your credentials in Contact.tsx"
+        );
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        setFormStatus("success");
+      } else {
+        // Actually send email using EmailJS
+        const result = await emailjs.sendForm(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_ID,
+          formRef.current!,
+          EMAILJS_PUBLIC_KEY
+        );
 
-    setIsSubmitting(false);
-    setFormStatus("success");
+        if (result.status === 200) {
+          setFormStatus("success");
+        } else {
+          setFormStatus("error");
+        }
+      }
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      setFormStatus("error");
+    } finally {
+      setIsSubmitting(false);
 
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setFormStatus("idle");
-      (e.target as HTMLFormElement).reset();
-    }, 3000);
+      // Reset form after 3 seconds on success
+      if (formStatus === "success") {
+        setTimeout(() => {
+          setFormStatus("idle");
+          formRef.current?.reset();
+        }, 3000);
+      }
+    }
   };
 
   return (
@@ -168,7 +208,7 @@ export default function Contact() {
 
           {/* Right Column - Contact Form */}
           <motion.div variants={itemVariants}>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-foreground/70 mb-2">
                   Name
@@ -252,6 +292,16 @@ export default function Contact() {
                   className="text-sm text-accent-primary text-center"
                 >
                   Thank you for reaching out! I&apos;ll get back to you soon.
+                </motion.p>
+              )}
+
+              {formStatus === "error" && (
+                <motion.p
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-sm text-red-500 text-center"
+                >
+                  Something went wrong. Please try again or email me directly.
                 </motion.p>
               )}
             </form>
