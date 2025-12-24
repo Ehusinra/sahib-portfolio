@@ -83,7 +83,7 @@ export default function Contact() {
           </h2>
           <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
             Open to remote opportunities, freelance projects, and collaborations.
-            Let's build something great together.
+            Let&apos;s build something great together.
           </p>
         </motion.div>
 
