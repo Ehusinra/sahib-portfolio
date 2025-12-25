@@ -58,46 +58,29 @@ export default function Contact() {
     setFormStatus("idle");
 
     try {
-      // Check if EmailJS credentials are configured
-      if (
-        EMAILJS_SERVICE_ID === "YOUR_SERVICE_ID" ||
-        EMAILJS_TEMPLATE_ID === "YOUR_TEMPLATE_ID" ||
-        EMAILJS_PUBLIC_KEY === "YOUR_PUBLIC_KEY"
-      ) {
-        // Fallback: Show success message without actually sending
-        console.warn(
-          "EmailJS not configured. Please add your credentials in Contact.tsx"
-        );
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        setFormStatus("success");
-      } else {
-        // Actually send email using EmailJS
-        const result = await emailjs.sendForm(
-          EMAILJS_SERVICE_ID,
-          EMAILJS_TEMPLATE_ID,
-          formRef.current!,
-          EMAILJS_PUBLIC_KEY
-        );
+      // Send email using EmailJS
+      const result = await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        formRef.current!,
+        EMAILJS_PUBLIC_KEY
+      );
 
-        if (result.status === 200) {
-          setFormStatus("success");
-        } else {
-          setFormStatus("error");
-        }
+      if (result.status === 200) {
+        setFormStatus("success");
+        // Reset form after 3 seconds on success
+        setTimeout(() => {
+          setFormStatus("idle");
+          formRef.current?.reset();
+        }, 3000);
+      } else {
+        setFormStatus("error");
       }
     } catch (error) {
       console.error("EmailJS Error:", error);
       setFormStatus("error");
     } finally {
       setIsSubmitting(false);
-
-      // Reset form after 3 seconds on success
-      if (formStatus === "success") {
-        setTimeout(() => {
-          setFormStatus("idle");
-          formRef.current?.reset();
-        }, 3000);
-      }
     }
   };
 
@@ -172,7 +155,7 @@ export default function Contact() {
             <motion.div variants={itemVariants}>
               <a
                 href="/cv.pdf"
-                download
+                download="Sabbi_Arrafta_Sahib_CV.pdf"
                 className="group relative flex items-center justify-center gap-3 w-full px-8 py-4 bg-foreground text-background rounded-full font-medium overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]"
               >
                 <Download className="w-5 h-5 group-hover:-translate-y-1 transition-transform" />

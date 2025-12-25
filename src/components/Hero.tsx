@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform, type Variants } from "framer-motion";
 import { ArrowRight, Mail } from "lucide-react";
 import { useRef } from "react";
-import MatrixRain from "./MatrixRain";
+import ClientOnlyMatrixRain from "./ClientOnlyMatrixRain";
 import ScrambleText from "./ScrambleText";
 import MagneticButton from "./MagneticButton";
 import TypingAnimation from "./TypingAnimation";
@@ -56,7 +56,7 @@ export default function Hero() {
   return (
     <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden px-6">
       {/* Matrix Rain Background */}
-      <MatrixRain />
+      <ClientOnlyMatrixRain />
 
       {/* Background Grid with Parallax */}
       <motion.div

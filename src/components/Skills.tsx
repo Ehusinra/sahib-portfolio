@@ -84,9 +84,12 @@ export default function Skills() {
     <section
       ref={sectionRef}
       id="skills"
-      className="relative py-24 px-6 bg-background"
+      className="relative py-24 px-6 bg-background border-t border-border-subtle section-gradient-subtle overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto">
+      {/* Subtle background accent */}
+      <div className="absolute top-20 right-0 w-96 h-96 bg-accent-primary/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="relative max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -14,8 +14,12 @@ export default function ScrollProgress() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent-primary via-accent-secondary to-accent-primary origin-left z-50 motion-reduce:hidden"
-      style={{ scaleX }}
+      className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent-primary via-accent-secondary to-accent-primary origin-left z-50 motion-reduce:hidden pointer-events-none"
+      style={{
+        scaleX,
+        margin: 0,
+        padding: 0,
+      }}
     />
   );
 }

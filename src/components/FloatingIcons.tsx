@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Code2, Braces, Terminal, Zap, Sparkles, Cpu } from "lucide-react";
+import { useTheme } from "./ThemeProvider";
 
 const icons = [
   { Icon: Code2, delay: 0, duration: 20, x: "10%", y: "20%" },
@@ -13,8 +14,16 @@ const icons = [
 ];
 
 export default function FloatingIcons() {
+  const { theme } = useTheme();
+
+  // MUCH darker, highly saturated colors for strong visibility
+  const iconColor = theme === "light" ? "#047857" : "#3b82f6"; // emerald-700 (very dark) for light, blue-500 for dark
+
+  // Much higher opacity for light mode to make icons clearly visible
+  const containerOpacity = theme === "light" ? "opacity-50" : "opacity-30";
+
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-20">
+    <div className={`fixed inset-0 pointer-events-none z-0 overflow-hidden ${containerOpacity}`}>
       {icons.map((item, index) => {
         const Icon = item.Icon;
         return (
@@ -35,7 +44,11 @@ export default function FloatingIcons() {
               delay: item.delay,
             }}
           >
-            <Icon className="w-12 h-12 text-accent-primary" strokeWidth={1} />
+            <Icon
+              className="w-14 h-14"
+              strokeWidth={1.5}
+              style={{ color: iconColor }}
+            />
           </motion.div>
         );
       })}

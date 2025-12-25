@@ -1,9 +1,14 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useTheme } from "./ThemeProvider";
 
 export default function ParticlesBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { theme } = useTheme();
+
+  // Subtle opacity for both modes
+  const canvasOpacity = theme === "light" ? "opacity-40" : "opacity-50";
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -14,6 +19,13 @@ export default function ParticlesBackground() {
 
     let animationFrameId: number;
     let particles: Particle[] = [];
+
+    // Theme-aware colors: MUCH darker, highly saturated colors for light mode visibility
+    const particleColor = theme === "light" ? "29, 78, 216" : "16, 185, 129"; // blue-700 (very dark) for light, emerald-500 for dark
+
+    // Theme-aware particle and connection visibility - matching dark mode subtlety
+    const particleOpacityMultiplier = theme === "light" ? 0.8 : 1; // Subtle particles in light mode
+    const connectionOpacityMultiplier = theme === "light" ? 1 : 1; // Same connection visibility for both modes
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -36,10 +48,10 @@ export default function ParticlesBackground() {
         this.canvas = canvasElement;
         this.x = Math.random() * this.canvas.width;
         this.y = Math.random() * this.canvas.height;
-        this.size = Math.random() * 2 + 0.5;
+        this.size = Math.random() * 2.5 + 1;
         this.speedX = Math.random() * 0.5 - 0.25;
         this.speedY = Math.random() * 0.5 - 0.25;
-        this.opacity = Math.random() * 0.5 + 0.2;
+        this.opacity = (Math.random() * 0.6 + 0.3) * particleOpacityMultiplier;
       }
 
       update() {
@@ -54,15 +66,15 @@ export default function ParticlesBackground() {
 
       draw() {
         if (!ctx) return;
-        ctx.fillStyle = `rgba(59, 130, 246, ${this.opacity})`;
+        ctx.fillStyle = `rgba(${particleColor}, ${this.opacity})`;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
       }
     }
 
-    // Initialize particles
-    const particleCount = Math.min(Math.floor((canvas.width * canvas.height) / 15000), 100);
+    // Initialize particles - increased count for more visibility
+    const particleCount = Math.min(Math.floor((canvas.width * canvas.height) / 10000), 150);
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle(canvas));
     }
@@ -76,10 +88,10 @@ export default function ParticlesBackground() {
           const dy = particles[i].y - particles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < 120) {
-            const opacity = (1 - distance / 120) * 0.2;
-            ctx.strokeStyle = `rgba(59, 130, 246, ${opacity})`;
-            ctx.lineWidth = 0.5;
+          if (distance < 150) {
+            const opacity = (1 - distance / 150) * 0.35 * connectionOpacityMultiplier;
+            ctx.strokeStyle = `rgba(${particleColor}, ${Math.min(opacity, 1)})`;
+            ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -109,13 +121,13 @@ export default function ParticlesBackground() {
       window.removeEventListener("resize", resize);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [theme]);
 
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0 opacity-40"
-      style={{ mixBlendMode: "screen" }}
+      className={`fixed inset-0 pointer-events-none z-0 ${canvasOpacity}`}
+      style={{ mixBlendMode: theme === "light" ? "multiply" : "screen" }}
     />
   );
 }
