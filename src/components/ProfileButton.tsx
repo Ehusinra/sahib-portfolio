@@ -54,8 +54,8 @@ export default function ProfileButton() {
         <div className="absolute inset-0 rounded-full bg-gradient-to-br from-emerald-500/10 via-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 to-transparent opacity-50" />
 
-        {/* Profile Picture - smaller on mobile */}
-        <div className="relative w-10 h-10 sm:w-14 sm:h-14 rounded-full overflow-hidden ring-2 ring-white/30 dark:ring-white/20 group-hover:ring-emerald-400/70 dark:group-hover:ring-blue-400/70 transition-all duration-300 shadow-lg">
+        {/* Profile Picture - responsive sizing */}
+        <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full overflow-hidden ring-2 ring-white/30 dark:ring-white/20 group-hover:ring-emerald-400/70 dark:group-hover:ring-blue-400/70 transition-all duration-300 shadow-lg">
           <Image
             src="/profile.jpg"
             alt="Sabbi Arrafta Sahib"
@@ -67,7 +67,7 @@ export default function ProfileButton() {
 
         {/* Initials with gradient text - hidden on mobile, visible on sm and up */}
         <motion.span
-          className={`hidden sm:inline relative text-sm font-bold bg-gradient-to-r bg-clip-text pr-1 tracking-[0.15em] uppercase ${
+          className={`hidden sm:inline relative text-xs sm:text-sm md:text-base lg:text-lg font-bold bg-gradient-to-r bg-clip-text pr-1 tracking-[0.15em] uppercase ${
             isHovered ? "text-transparent" : "text-foreground/90"
           }`}
           style={{
