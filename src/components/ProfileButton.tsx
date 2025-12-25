@@ -2,8 +2,33 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 
 export default function ProfileButton() {
+  const [isHovered, setIsHovered] = useState(false);
+  const [currentGradient, setCurrentGradient] = useState(0);
+
+  const gradients = [
+    { from: "#10b981", via: "#22d3ee", to: "#3b82f6" }, // emerald-cyan-blue
+    { from: "#a855f7", via: "#f472b6", to: "#f43f5e" }, // purple-pink-rose
+    { from: "#3b82f6", via: "#818cf8", to: "#a855f7" }, // blue-indigo-purple
+    { from: "#f97316", via: "#ef4444", to: "#f472b6" }, // orange-red-pink
+    { from: "#14b8a6", via: "#10b981", to: "#22c55e" }, // teal-emerald-green
+    { from: "#eab308", via: "#f97316", to: "#ef4444" }, // yellow-orange-red
+    { from: "#06b6d4", via: "#3b82f6", to: "#6366f1" }, // cyan-blue-indigo
+    { from: "#f43f5e", via: "#a855f7", to: "#6366f1" }, // rose-purple-indigo
+  ];
+
+  useEffect(() => {
+    if (!isHovered) return;
+
+    const interval = setInterval(() => {
+      setCurrentGradient((prev) => (prev + 1) % gradients.length);
+    }, 1500); // Change gradient every 1.5 seconds
+
+    return () => clearInterval(interval);
+  }, [isHovered, gradients.length]);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -18,7 +43,9 @@ export default function ProfileButton() {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
       className="fixed top-6 left-6 z-50 group"
-      style={{ fontFamily: 'var(--font-space-grotesk)' }}
+      style={{ fontFamily: 'var(--font-orbitron)' }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       whileHover={{ scale: 1.05, y: -2 }}
       whileTap={{ scale: 0.98 }}
     >
@@ -28,7 +55,7 @@ export default function ProfileButton() {
         <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 to-transparent opacity-50" />
 
         {/* Profile Picture */}
-        <div className="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-white/30 dark:ring-white/20 group-hover:ring-emerald-400/70 dark:group-hover:ring-blue-400/70 transition-all duration-300 shadow-lg">
+        <div className="relative w-14 h-14 rounded-full overflow-hidden ring-2 ring-white/30 dark:ring-white/20 group-hover:ring-emerald-400/70 dark:group-hover:ring-blue-400/70 transition-all duration-300 shadow-lg">
           <Image
             src="/profile.jpg"
             alt="Sabbi Arrafta Sahib"
@@ -38,10 +65,25 @@ export default function ProfileButton() {
           />
         </div>
 
-        {/* Initials with gradient text */}
-        <span className="relative text-sm font-bold bg-gradient-to-r from-foreground/90 to-foreground/70 bg-clip-text text-transparent group-hover:from-emerald-500 group-hover:via-cyan-400 group-hover:to-blue-500 dark:group-hover:from-blue-400 dark:group-hover:via-cyan-400 dark:group-hover:to-emerald-400 transition-all duration-300 pr-1 tracking-[0.15em] uppercase">
+        {/* Initials with gradient text - cycles through gradients on hover */}
+        <motion.span
+          className={`relative text-sm font-bold bg-gradient-to-r bg-clip-text pr-1 tracking-[0.15em] uppercase ${
+            isHovered ? "text-transparent" : "text-foreground/90"
+          }`}
+          style={{
+            backgroundImage: isHovered
+              ? `linear-gradient(to right, ${gradients[currentGradient].from}, ${gradients[currentGradient].via}, ${gradients[currentGradient].to})`
+              : undefined,
+          }}
+          animate={{
+            backgroundImage: isHovered
+              ? `linear-gradient(to right, ${gradients[currentGradient].from}, ${gradients[currentGradient].via}, ${gradients[currentGradient].to})`
+              : undefined,
+          }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+        >
           S.A.S
-        </span>
+        </motion.span>
 
         {/* Animated gradient glow on hover */}
         <div className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-500/0 via-cyan-500/0 to-blue-500/0 group-hover:from-emerald-500/5 group-hover:via-cyan-500/5 group-hover:to-blue-500/5 transition-all duration-300" />
