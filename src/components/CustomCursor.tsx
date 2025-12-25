@@ -5,6 +5,7 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function CustomCursor() {
   const [isPointer, setIsPointer] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(true); // Default to true for SSR
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
@@ -13,6 +14,17 @@ export default function CustomCursor() {
   const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
+    // Detect if device has touch capability
+    const checkTouchDevice = () => {
+      setIsTouchDevice(
+        'ontouchstart' in window ||
+        navigator.maxTouchPoints > 0 ||
+        window.matchMedia("(pointer: coarse)").matches
+      );
+    };
+
+    checkTouchDevice();
+
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX - 16);
       cursorY.set(e.clientY - 16);
@@ -30,6 +42,11 @@ export default function CustomCursor() {
     window.addEventListener("mousemove", moveCursor);
     return () => window.removeEventListener("mousemove", moveCursor);
   }, [cursorX, cursorY]);
+
+  // Don't render custom cursor on touch devices
+  if (isTouchDevice) {
+    return null;
+  }
 
   return (
     <>
