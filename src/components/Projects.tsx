@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ExternalLink, Code2, Briefcase } from "lucide-react";
+import Image from "next/image";
 
 interface Project {
   id: string;
@@ -146,10 +147,12 @@ export default function Projects() {
                             whileHover={{ scale: 1.02 }}
                             transition={{ duration: 0.3 }}
                           >
-                            <img
+                            <Image
                               src={image}
                               alt={`${project.title} screenshot ${index + 1}`}
-                              className="w-full h-full object-cover transition-all duration-500 group-hover/img:scale-110"
+                              fill
+                              className="object-cover transition-all duration-500 group-hover/img:scale-110"
+                              sizes="(max-width: 768px) 100vw, 33vw"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-300" />
                             <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between opacity-0 group-hover/img:opacity-100 transition-opacity duration-300">

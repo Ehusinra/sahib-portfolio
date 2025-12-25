@@ -55,7 +55,7 @@ export default function ProfileButton() {
         <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 to-transparent opacity-50" />
 
         {/* Profile Picture - responsive sizing */}
-        <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full overflow-hidden ring-2 ring-white/30 dark:ring-white/20 group-hover:ring-emerald-400/70 dark:group-hover:ring-blue-400/70 transition-all duration-300 shadow-lg">
+        <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 lg:w-17 lg:h-17 rounded-full overflow-hidden ring-2 ring-white/30 dark:ring-white/20 group-hover:ring-emerald-400/70 dark:group-hover:ring-blue-400/70 transition-all duration-300 shadow-lg">
           <Image
             src="/profile.jpg"
             alt="Sabbi Arrafta Sahib"
@@ -82,7 +82,7 @@ export default function ProfileButton() {
           }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
         >
-          S.A.S
+          SABBI
         </motion.span>
 
         {/* Animated gradient glow on hover */}

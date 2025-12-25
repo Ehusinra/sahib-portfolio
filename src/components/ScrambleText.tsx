@@ -5,14 +5,12 @@ import { useEffect, useState } from "react";
 interface ScrambleTextProps {
   text: string;
   className?: string;
-  speed?: number;
   scrambleSpeed?: number;
 }
 
 export default function ScrambleText({
   text,
   className = "",
-  speed = 50,
   scrambleSpeed = 20,
 }: ScrambleTextProps) {
   const [displayText, setDisplayText] = useState(text);
@@ -21,10 +19,14 @@ export default function ScrambleText({
   const chars = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`";
 
   useEffect(() => {
-    let currentIndex = 0;
-    let scrambleInterval: NodeJS.Timeout;
+    if (!isHovered) {
+      // When not hovered, schedule state update asynchronously
+      const timeout = setTimeout(() => setDisplayText(text), 0);
+      return () => clearTimeout(timeout);
+    }
 
-    const scramble = () => {
+    let currentIndex = 0;
+    const scrambleInterval = setInterval(() => {
       if (currentIndex <= text.length) {
         const scrambled = text
           .split("")
@@ -43,16 +45,10 @@ export default function ScrambleText({
         clearInterval(scrambleInterval);
         setDisplayText(text);
       }
-    };
+    }, scrambleSpeed);
 
-    if (isHovered) {
-      currentIndex = 0;
-      scrambleInterval = setInterval(scramble, scrambleSpeed);
-      return () => clearInterval(scrambleInterval);
-    } else {
-      setDisplayText(text);
-    }
-  }, [isHovered, text, scrambleSpeed]);
+    return () => clearInterval(scrambleInterval);
+  }, [isHovered, text, scrambleSpeed, chars]);
 
   return (
     <span

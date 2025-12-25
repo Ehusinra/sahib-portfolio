@@ -127,7 +127,7 @@ export default function About() {
             variants={itemVariants}
             className="space-y-4 md:pt-16"
           >
-            {highlights.map((item, index) => {
+            {highlights.map((item) => {
               const Icon = item.icon;
               return (
                 <motion.div

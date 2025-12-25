@@ -3,6 +3,53 @@
 import { useEffect, useRef } from "react";
 import { useTheme } from "./ThemeProvider";
 
+class Particle {
+  x: number;
+  y: number;
+  size: number;
+  speedX: number;
+  speedY: number;
+  opacity: number;
+  canvas: HTMLCanvasElement;
+  particleColor: string;
+  ctx: CanvasRenderingContext2D | null;
+
+  constructor(
+    canvasElement: HTMLCanvasElement,
+    particleColor: string,
+    particleOpacityMultiplier: number,
+    ctx: CanvasRenderingContext2D | null
+  ) {
+    this.canvas = canvasElement;
+    this.particleColor = particleColor;
+    this.ctx = ctx;
+    this.x = Math.random() * this.canvas.width;
+    this.y = Math.random() * this.canvas.height;
+    this.size = Math.random() * 2.5 + 1;
+    this.speedX = Math.random() * 0.5 - 0.25;
+    this.speedY = Math.random() * 0.5 - 0.25;
+    this.opacity = (Math.random() * 0.6 + 0.3) * particleOpacityMultiplier;
+  }
+
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+
+    if (this.x > this.canvas.width) this.x = 0;
+    if (this.x < 0) this.x = this.canvas.width;
+    if (this.y > this.canvas.height) this.y = 0;
+    if (this.y < 0) this.y = this.canvas.height;
+  }
+
+  draw() {
+    if (!this.ctx) return;
+    this.ctx.fillStyle = `rgba(${this.particleColor}, ${this.opacity})`;
+    this.ctx.beginPath();
+    this.ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    this.ctx.fill();
+  }
+}
+
 export default function ParticlesBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { theme } = useTheme();
@@ -18,7 +65,7 @@ export default function ParticlesBackground() {
     if (!ctx) return;
 
     let animationFrameId: number;
-    let particles: Particle[] = [];
+    const particles: Particle[] = [];
 
     // Theme-aware colors: MUCH darker, highly saturated colors for light mode visibility
     const particleColor = theme === "light" ? "29, 78, 216" : "16, 185, 129"; // blue-700 (very dark) for light, emerald-500 for dark
@@ -35,48 +82,10 @@ export default function ParticlesBackground() {
     resize();
     window.addEventListener("resize", resize);
 
-    class Particle {
-      x: number;
-      y: number;
-      size: number;
-      speedX: number;
-      speedY: number;
-      opacity: number;
-      canvas: HTMLCanvasElement;
-
-      constructor(canvasElement: HTMLCanvasElement) {
-        this.canvas = canvasElement;
-        this.x = Math.random() * this.canvas.width;
-        this.y = Math.random() * this.canvas.height;
-        this.size = Math.random() * 2.5 + 1;
-        this.speedX = Math.random() * 0.5 - 0.25;
-        this.speedY = Math.random() * 0.5 - 0.25;
-        this.opacity = (Math.random() * 0.6 + 0.3) * particleOpacityMultiplier;
-      }
-
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-
-        if (this.x > this.canvas.width) this.x = 0;
-        if (this.x < 0) this.x = this.canvas.width;
-        if (this.y > this.canvas.height) this.y = 0;
-        if (this.y < 0) this.y = this.canvas.height;
-      }
-
-      draw() {
-        if (!ctx) return;
-        ctx.fillStyle = `rgba(${particleColor}, ${this.opacity})`;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-
     // Initialize particles - increased count for more visibility
     const particleCount = Math.min(Math.floor((canvas.width * canvas.height) / 10000), 150);
     for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle(canvas));
+      particles.push(new Particle(canvas, particleColor, particleOpacityMultiplier, ctx));
     }
 
     // Draw connections between nearby particles
