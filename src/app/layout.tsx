@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Sabbi Arrafta Sahib" }],
   creator: "Sabbi Arrafta Sahib",
-  metadataBase: new URL("https://sabbiarraftasahib.com"), // Replace with actual domain
+  metadataBase: new URL("https://sahib-portfolio-zeta.vercel.app"), // Replace with actual domain
   alternates: {
     canonical: "/",
   },
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     title: "Sabbi Arrafta Sahib | Front-end Developer",
     description:
       "Front-end Developer specializing in React, Next.js, and TypeScript. Available for remote work and freelance projects.",
-    url: "https://sabbiarraftasahib.com", // Replace with actual domain
+    url: "https://sahib-portfolio-zeta.vercel.app", // Replace with actual domain
     siteName: "Sabbi Arrafta Sahib Portfolio",
     locale: "en_US",
     type: "website",

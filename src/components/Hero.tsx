@@ -102,10 +102,12 @@ export default function Hero() {
           <span className="gradient-text">
             <TypingAnimation
               words={[
-                "Front-end Developer",
+                "Full-Stack Developer",
+                "Software Engineer",
                 "React Specialist",
                 "TypeScript Expert",
-                "UI/UX Enthusiast"
+                "Next.js Enthusiast",
+                "Tech Innovator"
               ]}
             />
           </span>

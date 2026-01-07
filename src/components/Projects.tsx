@@ -39,12 +39,12 @@ export default function Projects() {
         "Implemented a modern stack with Next.js for optimal performance, Prisma for type-safe database queries, and responsive UI with Tailwind CSS. Integrated secure payment gateway and real-time inventory tracking.",
       outcome:
         "Delivered a fully functional e-commerce platform with smooth checkout experience, admin panel for product management, and optimized performance for mobile users.",
-      liveUrl: "#", // Replace with actual URL
-      // githubUrl: "#", // Uncomment if repo is public
+      liveUrl: "https://shajgoj-eta.vercel.app/",
+      githubUrl: "https://shajgoj-eta.vercel.app/",
       images: [
-        "https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?w=800&h=600&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&h=600&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&h=600&fit=crop&q=80",
+        "/project ss 1.png",
+        "/project ss 2.png",
+        "/project ss 3.png",
       ],
     },
   ];
@@ -234,7 +234,7 @@ export default function Projects() {
                     )}
                     {project.githubUrl && (
                       <a
-                        href={project.githubUrl}
+                        href="https://shajgoj-eta.vercel.app/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-6 py-3 border border-border-subtle bg-background/50 backdrop-blur-sm text-foreground rounded-full font-medium transition-all hover:bg-foreground/5 hover:border-foreground/20"
