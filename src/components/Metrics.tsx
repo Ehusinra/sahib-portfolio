@@ -43,21 +43,21 @@ export default function Metrics() {
 
   const metrics: Metric[] = [
     {
-      value: 500,
+      value: 200,
       label: "Hours of Coding",
       suffix: "+",
       icon: Code,
       color: "from-blue-500 to-cyan-500",
     },
     {
-      value: 50,
+      value: 10,
       label: "Projects Completed",
       suffix: "+",
       icon: GitBranch,
       color: "from-purple-500 to-pink-500",
     },
     {
-      value: 1000,
+      value: 500,
       label: "Cups of Coffee",
       suffix: "+",
       icon: Coffee,

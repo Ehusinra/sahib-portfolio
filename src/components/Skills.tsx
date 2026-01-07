@@ -30,10 +30,10 @@ export default function Skills() {
       color: "from-blue-500 to-cyan-500",
       skills: [
         { name: "React", level: "primary", proficiency: 95 },
-        { name: "Next.js", level: "primary", proficiency: 90 },
+        { name: "Next.js", level: "primary", proficiency: 85 },
         { name: "TypeScript", level: "primary", proficiency: 90 },
         { name: "Tailwind CSS", level: "primary", proficiency: 95 },
-        { name: "Vue.js", level: "proficient", proficiency: 75 },
+        { name: "Vue.js", level: "proficient", proficiency: 70 },
       ],
     },
     {
@@ -42,7 +42,7 @@ export default function Skills() {
       color: "from-violet-500 to-purple-500",
       skills: [
         { name: "Node.js", level: "primary", proficiency: 85 },
-        { name: "Laravel", level: "proficient", proficiency: 70 },
+        { name: "Laravel", level: "proficient", proficiency: 65 },
         { name: "Prisma", level: "proficient", proficiency: 80 },
         { name: "PostgreSQL", level: "proficient", proficiency: 75 },
       ],
@@ -53,7 +53,7 @@ export default function Skills() {
       color: "from-orange-500 to-red-500",
       skills: [
         { name: "Git", level: "primary", proficiency: 90 },
-        { name: "Docker", level: "proficient", proficiency: 75 },
+        { name: "Docker", level: "proficient", proficiency: 65 },
       ],
     },
   ];
