@@ -3,10 +3,12 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function ProfileButton() {
   const [isHovered, setIsHovered] = useState(false);
   const [currentGradient, setCurrentGradient] = useState(0);
+  const router = useRouter();
 
   const gradients = [
     { from: "#10b981", via: "#22d3ee", to: "#3b82f6" }, // emerald-cyan-blue
@@ -29,16 +31,20 @@ export default function ProfileButton() {
     return () => clearInterval(interval);
   }, [isHovered, gradients.length]);
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+  const handleClick = () => {
+    // Navigate to home and scroll to top
+    router.push("/");
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }, 100);
   };
 
   return (
     <motion.button
-      onClick={scrollToTop}
+      onClick={handleClick}
       initial={{ opacity: 0, scale: 0.8, y: -20 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
@@ -48,6 +54,7 @@ export default function ProfileButton() {
       onMouseLeave={() => setIsHovered(false)}
       whileHover={{ scale: 1.05, y: -2 }}
       whileTap={{ scale: 0.98 }}
+      title="Go to Home"
     >
       <div className="relative flex items-center gap-2 sm:gap-3 bg-white/5 dark:bg-black/5 backdrop-blur-sm rounded-full px-2 py-1.5 sm:px-4 sm:py-2 shadow-[0_10px_32px_rgba(0,0,0,0.16)] hover:shadow-[0_18px_48px_rgba(16,185,129,0.25)] dark:hover:shadow-[0_18px_48px_rgba(59,130,246,0.25)] transition-all duration-300 border border-white/20 dark:border-white/30 hover:border-emerald-400/60 dark:hover:border-blue-400/60">
         {/* Glassmorphism overlay effect with gradient */}

@@ -68,6 +68,12 @@ export default function Footer() {
                 Projects
               </a>
               <a
+                href="/services"
+                className="block text-foreground/70 hover:text-foreground transition-colors text-sm"
+              >
+                Services
+              </a>
+              <a
                 href="#contact"
                 className="block text-foreground/70 hover:text-foreground transition-colors text-sm"
               >

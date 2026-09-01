@@ -187,7 +187,7 @@ export default function Hero() {
         {/* CTA Buttons */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 flex-wrap"
         >
           <MagneticButton>
             <a
@@ -196,6 +196,18 @@ export default function Hero() {
             >
               <span className="relative z-10 flex items-center justify-center gap-2">
                 View Projects
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </span>
+            </a>
+          </MagneticButton>
+
+          <MagneticButton>
+            <a
+              href="/services"
+              className="group relative px-8 py-4 bg-gradient-to-r from-[#5f7de8] to-[#6d7edb] hover:from-[#5a75df] hover:to-[#667add] text-white/95 rounded-full font-medium overflow-hidden transition-all hover:scale-[1.02] hover:shadow-[0_0_24px_rgba(92,122,230,0.28)] w-full sm:w-auto inline-block"
+            >
+              <span className="relative z-10 flex items-center justify-center gap-2">
+                View Services
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </span>
             </a>

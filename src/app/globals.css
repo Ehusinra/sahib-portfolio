@@ -3,8 +3,8 @@
 :root {
   --background: #0a0a0a;
   --foreground: #f5f5f5;
-  --accent-primary: #3b82f6;
-  --accent-secondary: #8b5cf6;
+  --accent-primary: #5c7ae6;
+  --accent-secondary: #8a72d9;
   --border-subtle: rgba(255, 255, 255, 0.08);
   --grid-line: rgba(255, 255, 255, 0.03);
 }
@@ -12,8 +12,8 @@
 .light {
   --background: #fafafa;
   --foreground: #0a0a0a;
-  --accent-primary: #2563eb;
-  --accent-secondary: #7c3aed;
+  --accent-primary: #5875d6;
+  --accent-secondary: #7d67cf;
   --border-subtle: rgba(0, 0, 0, 0.08);
   --grid-line: rgba(0, 0, 0, 0.03);
 }
