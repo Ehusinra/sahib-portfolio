@@ -12,22 +12,11 @@ export default function TypingAnimation({ words, className = "" }: TypingAnimati
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
-    if (words.length === 0) {
-      return;
-    }
-
     const currentWord = words[currentWordIndex];
-
-    if (isPaused) {
-      const pauseTime = isDeleting ? 250 : 1500;
-      const timeout = setTimeout(() => setIsPaused(false), pauseTime);
-      return () => clearTimeout(timeout);
-    }
-
     const typingSpeed = isDeleting ? 50 : 100;
+    const pauseTime = isDeleting ? 500 : 2000;
 
     const timeout = setTimeout(() => {
       if (!isDeleting) {
@@ -36,8 +25,7 @@ export default function TypingAnimation({ words, className = "" }: TypingAnimati
           setCurrentText(currentWord.slice(0, currentText.length + 1));
         } else {
           // Pause before deleting
-          setIsPaused(true);
-          setIsDeleting(true);
+          setTimeout(() => setIsDeleting(true), pauseTime);
         }
       } else {
         // Deleting
@@ -46,14 +34,13 @@ export default function TypingAnimation({ words, className = "" }: TypingAnimati
         } else {
           // Move to next word
           setIsDeleting(false);
-          setIsPaused(true);
           setCurrentWordIndex((prev) => (prev + 1) % words.length);
         }
       }
     }, typingSpeed);
 
     return () => clearTimeout(timeout);
-  }, [currentText, isDeleting, currentWordIndex, words, isPaused]);
+  }, [currentText, isDeleting, currentWordIndex, words]);
 
   return (
     <span className={className}>
