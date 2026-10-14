@@ -31,7 +31,7 @@ export default function Projects() {
       description:
         "Full-stack e-commerce platform for beauty products with complete shopping cart, checkout flow, and admin dashboard.",
       role: "Full Stack Developer",
-      stack: ["Next.js", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL"],
+      stack: ["Next.js", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL", "Railway"],
       featured: true,
       challenge:
         "Build a production-ready e-commerce platform with seamless user experience, secure payment processing, and efficient inventory management.",
@@ -40,13 +40,48 @@ export default function Projects() {
       outcome:
         "Delivered a fully functional e-commerce platform with smooth checkout experience, admin panel for product management, and optimized performance for mobile users.",
       liveUrl: "https://shajgoj-eta.vercel.app/",
-      githubUrl: "https://shajgoj-eta.vercel.app/",
+      githubUrl: "https://github.com/sayeedzaman/shajgoj",
       images: [
         "/project ss 1.png",
         "/project ss 2.png",
         "/project ss 3.png",
       ],
     },
+    
+{
+  id: "astralign",
+  title: "Astralign",
+  description: "An astronomy & photography-focused web application.",
+  role: "Front-End Developer",
+  stack: ["Next.js", "TypeScript", "Tailwind CSS","Framer Motion"],
+  featured: true,
+  liveUrl: "https://astralign.vercel.app/",
+  githubUrl: "https://github.com/Ehusinra/Astralign",
+  images: ["/Astralign Screenshot 1.png",
+    "/Astralign Screenshot 2.png",
+    "/Astralign Screenshot 3.png",
+    "/Astralign Screenshot 4.png",
+    "/Astralign Screenshot 5.png",
+    "/Astralign Screenshot 6.png"],
+  
+},
+/*
+{
+  id: "myproject",
+  title: "My pProject",
+  description: "A short description of what the project does.",
+  role: "Full Stack Developer",
+  stack: ["Next.js", "TypeScript", "Tailwind CSS"],
+  featured: true,
+  liveUrl: "https://example.com/",
+  githubUrl: "https://github.com/username/my-project",
+  //images: ["/my-project.png"],
+  challenge: "What problem did the project need to solve?",
+  solution: "How did you approach that problem?",
+  outcome: "What was the result?",
+}
+*/
+
   ];
 
   const containerVariants = {
@@ -234,7 +269,7 @@ export default function Projects() {
                     )}
                     {project.githubUrl && (
                       <a
-                        href="https://shajgoj-eta.vercel.app/"
+                        href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-6 py-3 border border-border-subtle bg-background/50 backdrop-blur-sm text-foreground rounded-full font-medium transition-all hover:bg-foreground/5 hover:border-foreground/20"
