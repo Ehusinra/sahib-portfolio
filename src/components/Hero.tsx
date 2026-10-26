@@ -7,6 +7,7 @@ import ClientOnlyMatrixRain from "./ClientOnlyMatrixRain";
 import ScrambleText from "./ScrambleText";
 import MagneticButton from "./MagneticButton";
 import TypingAnimation from "./TypingAnimation";
+import {Download} from "lucide-react";
 
 const GithubIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -221,7 +222,20 @@ export default function Hero() {
               Get in Touch
             </a>
           </MagneticButton>
+
+          <MagneticButton>
+            <a
+                href="/cv.pdf"
+                download="Sabbi_Arrafta_Sahib_CV.pdf"
+                className="group relative flex items-center justify-center gap-3 w-full px-8 py-4 bg-foreground text-background rounded-full font-medium overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]"
+              >
+                <Download className="w-5 h-5 group-hover:-translate-y-1 transition-transform" />
+                Download CV
+              </a>
+          </MagneticButton>
         </motion.div>
+
+        
 
         {/* Social Links */}
         <motion.div
