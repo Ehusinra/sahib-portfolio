@@ -154,7 +154,7 @@ export default function Contact() {
             {/* CV Download */}
             <motion.div variants={itemVariants}>
               <a
-                href="/cv.pdf"
+                href="/Sabbi Arrafta Sahib_CV.pdf"
                 download="Sabbi_Arrafta_Sahib_CV.pdf"
                 className="group relative flex items-center justify-center gap-3 w-full px-8 py-4 bg-foreground text-background rounded-full font-medium overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]"
               >
