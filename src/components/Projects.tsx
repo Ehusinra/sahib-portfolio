@@ -76,6 +76,61 @@ export default function Projects() {
       ],
     },
     {
+      id: "prizfen",
+      title: "Priz-fen",
+      description:
+        "PrizFen gives teams a private workspace to plan projects, assign tasks, discuss work, and track deadlines and progress.",
+      role: "Full-Stack Developer",
+      stack: [
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Prisma",
+        "PostgreSQL",
+        "Zod",
+        "Lucide"
+
+      ],
+      featured: true,
+      liveUrl: "https://priz-fen.vercel.app/",
+      githubUrl: "https://github.com/Ehusinra/PrizFen",
+      images: [
+        "/PrizFen Screenshot 1.png",
+        "/PrizFen Screenshot 2.png",
+        "/PrizFen Screenshot 3.png",
+        "/PrizFen Screenshot 4.png",
+        "/PrizFen Screenshot 5.png",
+        "/PrizFen Screenshot 6.png",
+      ],
+    },
+    {
+      id: "inangi",
+      title: "Inangi",
+      description:
+        "Inventory and cash point of sale for independent retailers. Manage products, purchases, stock movements, and sales in one business workspace.",
+      role: "Full-Stack Developer",
+      stack: [
+        "Next.js",  
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion",
+        "Prisma",
+        "PostgreSQL",
+        "Zod",
+        "Lucide",
+        "Framer Motion"
+      ],
+      featured: true,
+      liveUrl: "https://inangi.vercel.app/",
+      githubUrl: "https://github.com/Ehusinra/Inangi",
+      images: [
+        "/Inangi Screenshot 1.png",
+        "/Inangi Screenshot 2.png",
+        "/Inangi Screenshot 3.png"
+      ],
+    },
+    {
       id: "astralign",
       title: "Astralign",
       description:
