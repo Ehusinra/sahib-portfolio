@@ -97,10 +97,7 @@ export default function Projects() {
       images: [
         "/PrizFen Screenshot 1.png",
         "/PrizFen Screenshot 2.png",
-        "/PrizFen Screenshot 3.png",
-        "/PrizFen Screenshot 4.png",
-        "/PrizFen Screenshot 5.png",
-        "/PrizFen Screenshot 6.png",
+        "/PrizFen Screenshot 3.png"
       ],
     },
     {
